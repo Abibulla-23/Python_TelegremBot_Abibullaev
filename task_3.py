@@ -9,6 +9,17 @@ def draw_board(board):
         print("---------")
 
 
+def check_win(player, board):
+    if board[0] == [player, player, player] or board[1] == [player, player, player] or board[2] == [player, player, player]:
+        print('Победили', player)
+    elif player == board[0][1] == board[1][1] == board[2][1] or player == board[0][0] == board[1][0] == board[2][0] or player == board[0][2] == board[1][2] == board[2][2]:
+        print('Победили', player)
+    elif player == board[0][0] == board[1][1] == board[2][2] or player == board[0][2] == board[1][1] == board[2][0]:
+        print('Победили', player)
+    else:
+        ask_and_make_move(player, board)
+
+
 def ask_move(player, board):
     point1 = int(input('Введите вертикальные координаты:'))
     point2 = int(input('Введите горизонтальные координаты:'))
@@ -30,15 +41,11 @@ def ask_and_make_move(player, board):
     point1 = tuple_with_move[1]
     point2 = tuple_with_move[2]
     make_move(sign_of_player, board, point1, point2)
+    check_win(player, board)
 
 
-def win(check_board):
-    if check_board[0] == ['X', 'X', 'X'] or check_board[1] == ['X', 'X', 'X'] or check_board[2] == ['X', 'X', 'X']:
-        print('Крестики победили!')
 
 
 draw_board(board)
 
-ask_and_make_move(player1, board)
-ask_and_make_move(player1, board)
-ask_and_make_move(player1, board)
+ask_and_make_move(player2, board)
